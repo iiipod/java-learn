@@ -16,9 +16,9 @@ public class Example32 {
 				groupSum += arr[i][j];
 			}
 			sum += groupSum;
-			System.out.println(groupSum);
+			System.out.println("第" + (i + 1) + "小组的销售额为: " + groupSum + "万元");
 		}
-		System.out.println(sum);
+		System.out.println("总销售额为:" + sum + "万元");
 	}
 
 }
