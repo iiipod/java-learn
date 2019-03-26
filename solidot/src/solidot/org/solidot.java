@@ -1,6 +1,8 @@
-package solidot;
+package solidot.org;
+
 import java.io.IOException;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,10 +41,10 @@ public class solidot<prviate> {
 		System.out.println(t1.text());
 	}
 	
-	for(int i=0;i<20;i++)
-	{
-		System.out.println(title.eachText());
-	}
+//	for(int i=0;i<20;i++)
+//	{
+//		System.out.println(title.eachText());
+//	}
 	
 	Elements content = doc.select("div.p_content > div");
 
@@ -58,29 +60,53 @@ public class solidot<prviate> {
 	
 	}
 	
-	
+
 	static void connjavadb() {
-		String url="jdbc:mysql://127.0.0.1:3306/";
-
+		String url="jdbc:mysql://127.0.0.1:3306/java";
 		String user="java";
-
-		String password="www.l0.pl";
+		String password="123456";
 		
-		Class.forName("com.mysql.jdbc.Driver");
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 
 		try {
-			java.sql.Connection conn = DriverManager.getConnection(url,user,password);
+			java.sql.Connection conn = DriverManager.getConnection(url,user,password);	
+			//java.sql.Connection conn;
+            PreparedStatement ps = conn.prepareStatement("select * from accounts");
+            ResultSet rs = ps.executeQuery();
+		  
+       // 关闭记录集
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+ 
+       // 关闭声明
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+ 
+       // 关闭链接对象
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//java.sql.Connection conn;
-		Statement curse = conn.createStatement();
-		ResultSet rs=curse.executeQuery("select * from user");
-		
-		rs.close();
-		curse.close();
-		conn.close();
 	}
+
 }
