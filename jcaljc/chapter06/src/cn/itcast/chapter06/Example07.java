@@ -17,6 +17,7 @@ public class Example07 {
 		while (it.hasNext()) {
 			Object obj = it.next();
 			System.out.println(obj);
+//			System.out.println(obj.hashCode());
 		}
 	}
 
