@@ -6,8 +6,8 @@ public class Example05 {
 
 	public static void main(String[] args) throws Exception {
 		
-		InputStream in = new FileInputStream("source/PlaneGnomeManjaro-1.2.zip");
-		OutputStream out = new FileOutputStream("target/PlaneGnomeManjaro-1.2.zip");
+		InputStream in = new FileInputStream("source/sample.log");
+		OutputStream out = new FileOutputStream("target/sample.log");
 		byte[] buffer = new byte[1024];
 		int len;
 		long begintime =System.currentTimeMillis();
